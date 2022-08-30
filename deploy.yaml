@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: demo-springboot
+  name: demo-springboot
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: demo-springboot
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: demo-springboot
+    spec:
+      containers:
+      - image: tsubasaxzzz/demo-spring-openjdkms-mariner
+        name: demo-spring-openjdkms-mariner
