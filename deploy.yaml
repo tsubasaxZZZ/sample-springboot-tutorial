@@ -16,5 +16,5 @@ spec:
         app: demo-springboot
     spec:
       containers:
-      - image: tsubasaxzzz/demo-spring-openjdkms-mariner
+      - image: <リポジトリ名>/demo-spring-openjdkms-mariner
         name: demo-spring-openjdkms-mariner
