@@ -38,9 +38,7 @@ sdk install java 17.0.4.1-ms
 
 1. コマンドパレットから Spring Boot Initializr を起動する
 2. `Select dependencies to add.` で `Spring Web` を選択する
-
-![](https://code.visualstudio.com/docs/java/java-spring-boot/spring-initializr.mp4)  
-※ ドキュメントより引用
+    1. [手順動画](https://code.visualstudio.com/docs/java/java-spring-boot/spring-initializr.mp4)
 
 ### 1.5 コードの追加
 
