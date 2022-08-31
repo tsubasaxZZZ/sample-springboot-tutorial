@@ -55,15 +55,13 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @RestController
 public class DemoApplication {
-
-    
     public static void main(String[] args) {
-    SpringApplication.run(DemoApplication.class, args);
+    	SpringApplication.run(DemoApplication.class, args);
     }
     
     @GetMapping("/hello")
     public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
-    return String.format("Hello %s!", name);
+    	return String.format("Hello %s!", name);
     }
 }
 ```
@@ -115,13 +113,13 @@ ENTRYPOINT ["java","-jar","/app.jar"]
 ### 2.3 Docker イメージのビルド
 
 ```bash
-docker build -t <レジストリ名>/demo-spring-openjdkms-mariner .
+docker build -t <レジストリ名>/demo-spring-openjdkms:mariner .
 ```
 
 Docker イメージのテスト:
 
 ```bash
-docker run -p 8080:8080 <レジストリ名>/demo-spring-openjdkms-mariner
+docker run -p 8080:8080 <レジストリ名>/demo-spring-openjdkms:mariner
 ```
 
 コンテナ起動後、ブラウザで `http://localhost:8080/hello` にアクセスする。
@@ -131,7 +129,7 @@ docker run -p 8080:8080 <レジストリ名>/demo-spring-openjdkms-mariner
 あらかじめ `docker login` 等でレジストリへログインする。
 
 ```bash
-docker push <レジストリ名>/demo-spring-openjdkms-mariner
+docker push <レジストリ名>/demo-spring-openjdkms:mariner
 ```
 
 ## 3. Kubernetes への展開
@@ -159,7 +157,7 @@ spec:
         app: demo-springboot
     spec:
       containers:
-      - image: tsubasaxzzz/demo-spring-openjdkms-mariner
+      - image: tsubasaxzzz/demo-spring-openjdkms:mariner
         name: demo-spring-openjdkms-mariner
 ```
 
