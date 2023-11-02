@@ -219,6 +219,26 @@ kubectl apply -f deploy.yaml
 kubectl expose deployment demo-springboot --type LoadBalancer --target-port 8080 --port 80
 ```
 
+## Optional
+
+### requests と limits
+
+```
+      - image: tsunomuracr1102.azurecr.io/demo-spring-app-1101:v0.2
+        name: demo-spring-openjdkms-mariner
+        resources:
+          limits:
+            cpu: 2000m
+            memory: 512Mi
+          requests:
+            cpu: 2000m
+            memory: 256Mi
+```
+
+### readiness と liveness
+
+### レプリカ
+
 ## Tips
 
 ### Microsoft の JDK と コンテナイメージ
