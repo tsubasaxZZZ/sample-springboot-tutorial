@@ -66,6 +66,52 @@ public class DemoApplication {
 }
 ```
 
+<details>
+  <summary>Option</summary>
+
+```java
+package com.example.demo;
+
+import java.util.Enumeration;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import jakarta.servlet.http.HttpServletRequest;
+
+@SpringBootApplication
+@RestController
+public class DemoApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(DemoApplication.class, args);
+    }
+
+    @GetMapping("/hello")
+    public String hello(@RequestParam(value = "name", defaultValue = "World") String name, HttpServletRequest request) {
+        // output all http headers
+        Enumeration<String> headerNames = request.getHeaderNames();
+        StringBuilder headers = new StringBuilder();
+        while (headerNames.hasMoreElements()) {
+            String headerName = headerNames.nextElement();
+            headers.append(headerName).append(": ").append(request.getHeader(headerName)).append("\n");
+        }
+        headers.append("remote addr: ").append(request.getRemoteAddr()).append("\n");
+        // Get hostname from environment variable
+        headers.append("hostname: ").append(System.getenv("HOSTNAME")).append("\n");
+        System.out.println(headers.toString());
+        // Print headers as HTML
+        return String.format("<html><body><h1>Hello %s!</h1><pre>%s</pre></body></html>", name, headers.toString());
+        // return String.format("Hello %s!", name);
+    }
+}
+```
+
+</details>
+
 ### 1.6 デバッグ
 
 #### CLI から実行
