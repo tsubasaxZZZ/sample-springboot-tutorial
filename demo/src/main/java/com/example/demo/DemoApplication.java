@@ -18,6 +18,6 @@ public class DemoApplication {
     public String hello(@RequestParam(value = "name", defaultValue = "World") String name, HttpServletRequest request) {
 		// Print IP address of client IP
 		System.out.println("Client IP: " + request.getRemoteAddr());
-    	return String.format("Hello %s!(%s)", name, request.getRemoteAddr());
+    	return String.format("Hello %s! Your IP address is (%s).", name, request.getRemoteAddr());
     }
 }
